@@ -1,49 +1,29 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class BarChartSample2 extends StatefulWidget {
+class TDChart extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => BarChartSample2State();
+  State<StatefulWidget> createState() => TDChartState();
 }
 
-class BarChartSample2State extends State<BarChartSample2> {
-  final Color leftBarColor = const Color(0xff53fdd7);
-  final Color rightBarColor = const Color(0xffff5182);
-  final double width = 9;
-
-  List<BarChartGroupData> rawBarGroups;
+class TDChartState extends State<TDChart> {
   List<BarChartGroupData> showingBarGroups;
-
-  int touchedGroupIndex;
 
   @override
   void initState() {
     super.initState();
-    final barGroup1 = makeGroupData(0, 5, 12);
-    final barGroup2 = makeGroupData(1, 16, 12);
-    final barGroup3 = makeGroupData(2, 18, 5);
-    final barGroup4 = makeGroupData(3, 20, 16);
-    final barGroup5 = makeGroupData(4, 17, 6);
-    final barGroup6 = makeGroupData(5, 19, 9.5);
-    final barGroup7 = makeGroupData(6, 10, 0.5);
-    final barGroup8 = makeGroupData(7, 17, 7.5);
-    final barGroup9 = makeGroupData(8, 12, 8.2);
 
-    final items = [
-      barGroup1,
-      barGroup2,
-      barGroup3,
-      barGroup4,
-      barGroup5,
-      barGroup6,
-      barGroup7,
-      barGroup8,
-      barGroup9
+    showingBarGroups = [
+      makeGroupData(0, 5, 12),
+      makeGroupData(1, 16, 12),
+      makeGroupData(2, 18, 5),
+      makeGroupData(3, 20, 16),
+      makeGroupData(4, 17, 6),
+      makeGroupData(5, 19, 9.5),
+      makeGroupData(6, 10, 0.5),
+      makeGroupData(7, 17, 7.5),
+      makeGroupData(8, 12, 8.2)
     ];
-
-    rawBarGroups = items;
-
-    showingBarGroups = rawBarGroups;
   }
 
   @override
@@ -51,20 +31,16 @@ class BarChartSample2State extends State<BarChartSample2> {
     return Container(
       height: MediaQuery.of(context).size.height / 3,
       child: Card(
-        elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         color: Colors.blue.withOpacity(0.5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: BarChart(
                   BarChartData(
-                    maxY: 20,
                     titlesData: FlTitlesData(
                       show: true,
                       bottomTitles: SideTitles(
@@ -75,6 +51,7 @@ class BarChartSample2State extends State<BarChartSample2> {
                             fontSize: 14),
                         margin: 20,
                         getTitles: (double value) {
+                          //return country[value.toInt()].shortname
                           switch (value.toInt()) {
                             case 0:
                               return 'W';
@@ -135,17 +112,9 @@ class BarChartSample2State extends State<BarChartSample2> {
   }
 
   BarChartGroupData makeGroupData(int x, double y1, double y2) {
-    return BarChartGroupData(barsSpace: 4, x: x, barRods: [
-      BarChartRodData(
-        y: y1,
-        color: leftBarColor,
-        width: width,
-      ),
-      BarChartRodData(
-        y: y2,
-        color: rightBarColor,
-        width: width,
-      ),
+    return BarChartGroupData(x: x, barRods: [
+      BarChartRodData(y: y1, color: Colors.lightGreen),
+      BarChartRodData(y: y2, color: Colors.red),
     ]);
   }
 }

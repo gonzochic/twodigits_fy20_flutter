@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import 'chart.dart';
+import 'header.dart';
 import 'list.dart';
 
 void main() {
@@ -59,135 +60,35 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<Offset> _offsetAnimation;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 1),
-      vsync: this,
-    )..animateTo(1.0);
-    _offsetAnimation = Tween<Offset>(
-      begin: Offset(0, -1),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeIn,
-    ));
-  }
-
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       backgroundColor: Colors.purple.shade50,
-      body: SlideTransition(
-        position: _offsetAnimation,
-        child: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height / 3,
-              decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  gradient: LinearGradient(
-                    colors: [Colors.purple.shade700, Colors.purple.shade400],
-                    stops: [0.0, 0.7],
-                  ),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(40),
-                      bottomRight: Radius.circular(40))),
-              child: SafeArea(
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.public,
-                                size: 40,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Flexible(
-                                child: Text(
-                                  "Always stay up-to-date with the newest Corona information.",
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 3,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .title
-                                      .copyWith(color: Colors.white),
-                                  textAlign: TextAlign.center,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        RaisedButton.icon(
-                          onPressed: () => print("Click"),
-                          textColor: Colors.white,
-                          color: Colors.red,
-                          icon: Icon(Icons.call),
-                          label: Text("Call Now"),
-                        ),
-                        RaisedButton.icon(
-                            onPressed: () => print("Click"),
-                            label: Text("Send SMS"),
-                            icon: Icon(Icons.sms),
-                            textColor: Colors.white,
-                            color: Colors.orange)
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    )
-                  ],
-                ),
-              ),
+      body: Column(
+        children: [
+          TDHeader(),
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Safety Tips",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.start,
             ),
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Safety Tips",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.start,
-              ),
+          ),
+          TDList(),
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Confirmed Cases",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.start,
             ),
-            TDList(),
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Confirmed Cases",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.start,
-              ),
-            ),
-            Center(child: BarChartSample2()),
-          ],
-        ),
+          ),
+          TDChart(),
+        ],
       ),
     );
   }
