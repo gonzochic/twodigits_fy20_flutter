@@ -23,7 +23,7 @@ class TDList extends StatelessWidget {
 
   _buildListElement(BuildContext context, String title, String content) {
     return Container(
-      width: MediaQuery.of(context).size.width / 1.5,
+      width: MediaQuery.of(context).size.width * 0.65,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -39,7 +39,7 @@ class TDList extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: Colors.purple),
+                    color: Theme.of(context).primaryColor),
               ),
               Text(
                 content,
