@@ -22,6 +22,8 @@ class TDHeader extends StatelessWidget {
                 padding: const EdgeInsets.all(12.0),
                 child: Center(
                   child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
                         Icons.public,
