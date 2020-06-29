@@ -24,20 +24,15 @@ class ConfirmedCases extends StatelessWidget {
               return Card(
                 child: ListTile(
                   contentPadding: EdgeInsets.all(10.0),
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  title: Text(item.name,
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  trailing: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(item.name,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text("Active: " + item.active.toString()),
-                          Text("Deaths: " + item.deaths.toString()),
-                          Text("Recovered: " + item.recovered.toString())
-                        ],
-                      )
+                      Text("Active: " + item.active.toString()),
+                      Text("Recovered: " + item.recovered.toString())
                     ],
                   ),
                 ),
