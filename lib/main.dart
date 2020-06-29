@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:two_digits/cases.dart';
-
-import 'chart.dart';
-import 'header.dart';
-import 'tips.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,43 +31,6 @@ class CoronaApp extends StatefulWidget {
 class _CoronaAppState extends State<CoronaApp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.purple.shade50,
-      body: Column(
-        children: [
-          TDHeader(),
-          Container(
-            padding: const EdgeInsets.all(16.0),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Safety Tips",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.start,
-            ),
-          ),
-          Tips(),
-          Container(
-            padding: const EdgeInsets.all(16.0),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Confirmed Cases",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.start,
-            ),
-          ),
-          GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ConfirmedCases()),
-                );
-              },
-              child: TDChart()),
-          Container(
-            height: 10,
-          ),
-        ],
-      ),
-    );
+    return Container();
   }
 }

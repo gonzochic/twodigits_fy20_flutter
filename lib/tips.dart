@@ -17,17 +17,7 @@ class Tips extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.all(8.0),
-        itemCount: tips.length,
-        itemBuilder: (context, index) {
-          final tip = tips[index];
-          return _buildListElement(context, tip.title, tip.description);
-        },
-      ),
-    );
+    return Container();
   }
 
   _buildListElement(BuildContext context, String title, String content) {
