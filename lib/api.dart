@@ -2,16 +2,16 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-class TDState {
+class Case {
   String name;
   int id;
   int deaths;
   int active;
   int recovered;
 
-  TDState({this.id, this.name, this.deaths, this.active, this.recovered});
-  factory TDState.fromJson(Map<String, dynamic> json) {
-    return TDState(
+  Case({this.id, this.name, this.deaths, this.active, this.recovered});
+  factory Case.fromJson(Map<String, dynamic> json) {
+    return Case(
         id: int.parse(json["GKZ"]),
         name: json["Bundesland"],
         deaths: int.parse(json["Todesfälle"]),
@@ -45,13 +45,13 @@ class TDState {
   }
 }
 
-class TDApi {
-  static Future<List<TDState>> getStatistics() async {
+class CoronaApi {
+  static Future<List<Case>> getStatistics() async {
     try {
       var response =
           await http.get("https://covid.softwarecorner.at/api/getStates");
       var states = json.decode(response.body) as List;
-      return states.map((json) => TDState.fromJson(json)).toList();
+      return states.map((json) => Case.fromJson(json)).toList();
     } catch (e) {
       print(e);
       return [];

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'api.dart';
 
-class TDChart extends StatelessWidget {
+class CoronaChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,8 +17,8 @@ class TDChart extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: FutureBuilder<List<TDState>>(
-                    future: TDApi.getStatistics(),
+                child: FutureBuilder<List<Case>>(
+                    future: CoronaApi.getStatistics(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData)
                         return Center(child: CircularProgressIndicator());
