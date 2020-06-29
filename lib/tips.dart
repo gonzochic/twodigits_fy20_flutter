@@ -1,22 +1,31 @@
 import 'package:flutter/material.dart';
 
-class TDList extends StatelessWidget {
+class Tip {
+  final String title;
+  final String description;
+
+  const Tip(this.title, this.description);
+}
+
+class Tips extends StatelessWidget {
+  static const tips = [
+    Tip("Wash your hands",
+        "Wash your hands regulary to prevent being affected."),
+    Tip("Wear a mask",
+        "Whenever you go outside, don't forget to put on a mask."),
+    Tip("Keep distance", "Keep at least 1.5m distance to others"),
+  ];
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView(
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.all(8.0),
-        children: <Widget>[
-          _buildListElement(context, "Wash your hands",
-              "Wash your hands regulary to prevent being affected."),
-          _buildListElement(context, "Wear a mask",
-              "Whenever you go outside, don't forget to put on a mask."),
-          _buildListElement(context, "Wash your hands",
-              "Wash your hands regulary to prevent being affected."),
-          _buildListElement(context, "Wash your hands",
-              "Wash your hands regulary to prevent being affected."),
-        ],
+        itemCount: tips.length,
+        itemBuilder: (context, index) {
+          final tip = tips[index];
+          return _buildListElement(context, tip.title, tip.description);
+        },
       ),
     );
   }
