@@ -1,4 +1,3 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:two_digits/cases.dart';
 
@@ -24,17 +23,17 @@ class MyApp extends StatelessWidget {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
+      home: CoronaApp(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class CoronaApp extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _CoronaAppState createState() => _CoronaAppState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _CoronaAppState extends State<CoronaApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
