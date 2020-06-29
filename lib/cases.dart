@@ -11,8 +11,8 @@ class ConfirmedCases extends StatelessWidget {
       appBar: AppBar(
         title: Text("Cases"),
       ),
-      body: FutureBuilder<List<TDState>>(
-        future: TDApi.getStatistics(),
+      body: FutureBuilder<List<Case>>(
+        future: CoronaApi.getStatistics(),
         builder: (context, snapshot) {
           if (!snapshot.hasData)
             return Center(child: CircularProgressIndicator());

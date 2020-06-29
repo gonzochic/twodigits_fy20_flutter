@@ -40,7 +40,7 @@ class _CoronaAppState extends State<CoronaApp> {
       backgroundColor: Colors.purple.shade50,
       body: Column(
         children: [
-          TDHeader(),
+          CoronaHeader(),
           Container(
             padding: const EdgeInsets.all(16.0),
             alignment: Alignment.centerLeft,
@@ -67,7 +67,7 @@ class _CoronaAppState extends State<CoronaApp> {
                   MaterialPageRoute(builder: (context) => ConfirmedCases()),
                 );
               },
-              child: TDChart()),
+              child: CoronaChart()),
           Container(
             height: 10,
           ),
