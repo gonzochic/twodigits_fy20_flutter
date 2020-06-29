@@ -45,7 +45,7 @@ class TDChart extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14),
                               margin: 10,
-                              reservedSize: 15,
+                              reservedSize: 20,
                               getTitles: (value) {
                                 if (value % 100 == 0) {
                                   return value.toInt().toString();
@@ -79,14 +79,3 @@ class TDChart extends StatelessWidget {
     );
   }
 }
-// barGroups: snapshot.data
-//                               .map((state) =>
-//                                   BarChartGroupData(x: state.id, barRods: [
-//                                     BarChartRodData(
-//                                         y: state.deaths /
-//                                             (state.active +
-//                                                 state.deaths +
-//                                                 state.recovered),
-//                                         color: Colors.orangeAccent),
-//                                   ]))
-//                               .toList(),

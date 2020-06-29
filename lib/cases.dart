@@ -21,26 +21,24 @@ class ConfirmedCases extends StatelessWidget {
             itemBuilder: (context, index) {
               final item = snapshot.data[index];
 
-              return Container(
-                child: Card(
-                  child: ListTile(
-                    contentPadding: EdgeInsets.all(10.0),
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(item.name,
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold)),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text("Active: " + item.active.toString()),
-                            Text("Deaths: " + item.deaths.toString()),
-                            Text("Recovered: " + item.recovered.toString())
-                          ],
-                        )
-                      ],
-                    ),
+              return Card(
+                child: ListTile(
+                  contentPadding: EdgeInsets.all(10.0),
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(item.name,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text("Active: " + item.active.toString()),
+                          Text("Deaths: " + item.deaths.toString()),
+                          Text("Recovered: " + item.recovered.toString())
+                        ],
+                      )
+                    ],
                   ),
                 ),
               );
